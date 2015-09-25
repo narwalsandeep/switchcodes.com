@@ -1,0 +1,48 @@
+<div class="col-lg-6 col-lg-offset-3">
+	<form class="form-horizontal" ajax-form-submit
+		action="<?php echo $this->url("application/child",array("controller"=>"signin","action"=>"process"))?>"
+		method="post">
+		<div class="wizard" data-initialize="wizard">
+			<ul class="steps">
+				<li  data-name="about" class="active">LOGIN<span
+					class="chevron"></span></li>
+			</ul>
+			<div class="step-content">
+				<div class=" alert">
+					<div class="form-group">
+						<label for="username" class="col-lg-2 control-label">Email</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" id="username"
+								name="username" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="passwd" class="col-lg-2 control-label">Password</label>
+						<div class="col-lg-8">
+							<input type="password" class="form-control" id="passwd"
+								name="passwd" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label"></label>
+						<div class="col-lg-8">
+							<input type="submit" value="Submit" class="btn btn-primary">
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-lg-2 control-label"></label>
+						<div class="col-lg-8">
+						<h5 class="text text-muted">Do not have an account yet Click Here!</h5>
+						<hr>
+							<a href="">Forgot password?</a>
+						</div>
+					</div>
+					
+
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

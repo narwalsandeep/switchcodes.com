@@ -1,0 +1,205 @@
+<div class="col-lg-12">
+	<div class="col-lg-2 wizard">
+		<h3>SIGN UP</h3>
+		<hr>
+		<p class="">Registration is simple. Provide us just the basic
+			information about you, configure some settings and get started.</p>
+		<p class="">
+			<strong> Already have an account <a
+				href="<?php echo $this->url("application/child",array("controller"=>"signup"))?>">Click
+					Here</a> to Sign in.
+			</strong>
+		</p>
+		<hr>
+		<small class="text text-muted">We will never send you promotional
+			email, unless you subscribe with us.</small> <br> <br>
+
+	</div>
+
+	<div class="col-lg-10" style="display: none" id="signup-successful">
+		<div class="panel">
+		<br><br>
+		<h1 class="text text-center text-success"><span class="glyphicon glyphicon-thumbs-up"></span></h1><hr>
+			<h3 class="text text-center">Brill .. you are successfully registered now.</h3>
+				<br><br>
+			<p class="text text-center">We would like you to <strong class="text text-success">Click a
+				link on your Email</strong> which will confirm us that you are a human and not a Robot.</p>
+				
+				<br><br><br><br>
+		</div>
+	</div>
+	<div class="col-lg-10" id="signup-wizard">
+		<div class="">
+			<form class="form-horizontal" ajax-form-submit
+				action="<?php echo $this->url("ajax",array("controller"=>"application","action"=>"signup"))?>"
+				method="post">
+				<div class="wizard" data-initialize="wizard" id="signup_form">
+					<ul class="steps">
+						<li data-step="1" data-name="about" class="active"><span
+							class="badge">1</span>About You<span class="chevron"></span></li>
+						<li data-step="2" data-name="settings"><span class="badge">2</span>Basic
+							Settings<span class="chevron"></span></li>
+						<li data-step="3" data-name="login"><span class="badge">3</span>Login
+							Details<span class="chevron"></span></li>
+					</ul>
+					<div class="actions">
+						<button type="button" class="btn btn-primary btn-sm btn-prev"
+							id="prev_button">
+							<span class="glyphicon glyphicon-arrow-left"></span>Prev
+						</button>
+						<button type="button" class="btn btn-primary btn-next btn-sm"
+							id="next_button" data-last="Complete">
+							Next<span class="glyphicon glyphicon-arrow-right"></span>
+						</button>
+					</div>
+					<div class="step-content">
+						<div class="step-pane active sample-pane alert" data-step="1">
+							<h5 class="text text-muted">Below information will help us to
+								identify you.</h5>
+							<hr>
+							<div class="form-group">
+								<label for="first_name" class="col-lg-2 control-label">First
+									Name</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="first_name"
+										name="first_name" placeholder="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="last_name" class="col-lg-2 control-label">Last Name</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="last_name"
+										name="last_name" placeholder="">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="mobile" class="col-lg-2 control-label">Mobile</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="mobile"
+										name="mobile" placeholder="">
+								</div>
+							</div>
+
+						</div>
+						<div class="step-pane sample-pane alert " data-step="2">
+							<h5 class="text text-muted">Below settings will help you to
+								receive alert email and updates.</h5>
+							<hr>
+							<div class="form-group">
+								<label for="weekly_cost_threshold"
+									class="col-lg-2 control-label">Weekly Cost Threshold</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control"
+										id="weekly_cost_threshold" name="weekly_cost_threshold"
+										placeholder=""> <small>if your Weekly cost reach to above
+										specified amount, we will send you email alert</small>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="monthly_cost_threshold"
+									class="col-lg-2 control-label">Monthly Cost Threshold</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control"
+										id="monthly_cost_threshold" name="monthly_cost_threshold"
+										placeholder=""> <small>if your Monthly cost reach to above
+										specified amount, we will send you email alert</small>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="quarterly_cost_threshold"
+									class="col-lg-2 control-label">Quarterly Cost Threshold</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control"
+										id="quarterly_cost_threshold" name="quarterly_cost_threshold"
+										placeholder=""> <small>if your Quarterly cost reach to above
+										specified amount, we will send you email alert</small>
+								</div>
+							</div>
+
+						</div>
+						<div class="step-pane sample-pane alert" data-step="3">
+							<h5 class="text text-muted">Below information will let you login.</h5>
+							<hr>
+
+							<div class="form-group">
+								<label for="email" class="col-lg-2 control-label">Email/Username</label>
+								<div class="col-lg-10">
+									<input type="email" class="form-control" id="username"
+										name="username" placeholder="(this is REQUIRED)"> <small
+										class="username_error text text-danger"></small>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="passwd" class="col-lg-2 control-label">Password</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="passwd"
+										name="passwd" placeholder="(this is REQUIRED)"> <small
+										class="passwd_error text text-danger"></small>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="c_passwd" class="col-lg-2 control-label">Confirm
+									Password</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="c_passwd"
+										name="c_passwd" placeholder="(this is REQUIRED)"> <small
+										class="c_passwd_error text text-danger"></small>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function(){
+
+	$('#signup_form').on('finished.fu.wizard', function (evt, data) {
+		$email = $("#username").val();
+		$passwd = $("#passwd").val();
+		$c_passwd = $("#c_passwd").val();
+		$error = false;
+		
+		if($email == ""){
+			$(".username_error").html("Username is required. Must be a valid email.");
+			$error = true;
+			
+		}
+		if($passwd == ""){
+			$(".passwd_error").html("Password is required.");
+			$error = true;
+			
+		}
+		if($c_passwd == "" || $passwd != $c_passwd){
+			$(".c_passwd_error").html("Confirm Passwod is required, and must match Password.");
+			$error = true;
+		}
+
+		if(!$error)
+			$(this).parent().submit();			
+		
+	});
+
+	// via ajax submit plugin
+	$('form[ajax-form-submit]').autosubmit(function(form,response){
+		if(response.success){
+			showNoty("success",response.message);
+			$("#signup-wizard").remove();
+			$("#signup-successful").show();
+			
+		}
+		else{
+			showNoty("error",response.message);
+		}
+		
+	},function(form,response){
+		showNoty("error","Cannot process request. Try Again!");
+	});
+	
+});
+</script>

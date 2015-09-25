@@ -1,0 +1,124 @@
+
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+
+<h3 class="text text-muted">
+	<strong class="text text-success">Flyjax</strong> is a jquery plugin to
+	ajax enable a form.
+</h3>
+<div>
+	<small class="text text-muted">version: </small><small
+		class="text text-info">1.0.0 </small>
+</div>
+<div>
+	<small class="text text-muted">github: </small><small
+		class="text text-info"> <a
+		href="https://github.com/narwalsandeep/flyjax">https://github.com/narwalsandeep/flyjax</a></small>
+</div>
+<div>
+	<small class="text text-muted">read: </small><small
+		class="text text-info"> <a
+		href="<?php echo $this->basepath()?>/article/flyjax/read">article</a></small>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert">
+			<form class="form-horizontal" method="post" flyjax action="foo.php">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input class="form-control" name="email" placeholder="Email">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="password"
+							placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword3" class="col-sm-2 control-label"> Type</label>
+					<div class="col-sm-10">
+						<select class="form-control" name="user_type"><option value="1">Customer</option>
+							<option value="2">Business</option></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="checkbox">
+							<label> <input type="checkbox"> Remember me
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" name="" class="btn btn-primary">Try Me!</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<hr>
+	<h4>Code for above form:</h4>
+	<pre>
+			<code>
+$('form[ajax-form-submit]').flyjax({
+	noty:noty
+}
+function(form, response) {
+	if (response.success) {
+		showNoty("success", response.message);
+	} else {
+		showNoty("error", response.message);
+	}
+}, function(form, response) {
+	showNoty("error", "Cannot process request. Please Try Again!");
+});
+
+			</code>
+		</pre>
+</div>
+
+
+<!-- required files -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+	integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+	crossorigin="anonymous"></script>
+
+<!-- below not needed -->
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+
+
+<!-- source js -->
+<script src="<?php echo $this->basepath()?>/_demo/flyjax/noty.js"></script>
+<script src="<?php echo $this->basepath()?>/_demo/flyjax/source.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('form[flyjax]').flyjax({
+			noty : noty,
+			notySuccess : "Successful",
+			notyFailure : "Error Occurred!"
+
+		}, function(form, response) {
+			// Success : do something
+		}, function(form, response) {
+			// Failure : do something
+		});
+	});
+</script>
+
+<script>
+	hljs.initHighlightingOnLoad();
+</script>

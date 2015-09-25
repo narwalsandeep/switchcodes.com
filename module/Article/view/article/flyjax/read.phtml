@@ -1,0 +1,71 @@
+<h3 class="text text-muted">
+	<strong class="text text-success">Flyjax</strong> is a jquery plugin to
+	ajax enable a form.
+</h3>
+<div>
+	<small class="text text-muted">version: </small><small
+		class="text text-info">1.0.0 </small>
+</div>
+<div>
+	<small class="text text-muted">github: </small><small
+		class="text text-info"> <a
+		href="https://github.com/narwalsandeep/flyjax">https://github.com/narwalsandeep/flyjax</a></small>
+</div>
+<div>
+	<small class="text text-muted">try: </small><small
+		class="text text-info"> <a
+		href="<?php echo $this->basepath()?>/article/flyjax/try">Demo</a></small>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<h4>Features:</h4>
+			<ul>
+				<li>Ajax enable any form</li>
+				<li>Inbuild with Noty Plugin <a href="http://ned.im/noty/#/about">link
+						to noty website</a></li>
+				<li>Support Success and Failure Callback</li>
+				<li>Option to disable Submit Button</li>
+				<li>Auto fallback of original submit button value when ajax call
+					finishes</li>
+
+			</ul>
+			<hr>
+			<h4>Requirement:</h4>
+			<ul>
+				<li>source.js and noty.js (both provided)</li>
+				<li>Form must have the attribute 'flyjax' like below <br> <code>&lt;form
+						method="post" flyjax action="foo.php"&gt;</code></li>
+				<li>There must be a 'button' with type="submit"</li>
+			</ul>
+			<i class="text text-warning">consider sourcecode of form on right.</i>
+			<hr>
+			<h4>Usage:</h4>
+			<code>$(IDENTIFIER).flyjax(options, successCallback,
+				failureCallback);</code>
+			<div>To use Noty Plugin just include noty.js provided in your page
+				and pass below config option:</div>
+			<code>$(IDENTIFIER).flyjax({noty:noty}, successCallback,
+				failureCallback);</code>
+
+			<hr>
+			<h4>Sample Config :</h4>
+			<code>
+				{<bR>enableNoty : true,<br> noty:noty,<bR> notySuccess : "Form was
+				submitted",<bR> notyFailure : "An error occurred",<bR>
+				disabledSubmitButtonText : "Please wait...",<br> }
+			</code>
+			<br> <small class="text text-primary">check source.js to see their
+				default value</small>
+			<hr>
+			<h4>RoadMap:</h4>
+			<ul>
+				<li>Allow file uploads</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+</div>
