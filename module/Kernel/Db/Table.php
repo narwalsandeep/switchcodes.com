@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\Entity;
+namespace Kernel\Db;
 
 use Zend\Db\TableGateway\TableGateway;
 
@@ -12,7 +12,7 @@ use Zend\Db\TableGateway\TableGateway;
  * @author sandeepnarwal
  *        
  */
-abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareInterface {
+abstract class Table implements \Zend\ServiceManager\ServiceLocatorAwareInterface {
 	
 	/**
 	 *
@@ -22,21 +22,9 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 	
 	/**
 	 *
-	 * @var unknown
-	 */
-	public $err;
-	
-	/**
-	 *
 	 * @var TableGateway
 	 */
 	public $tableGateway;
-	
-	/**
-	 *
-	 * @var unknown
-	 */
-	protected $errorMessage = null;
 	
 	/**
 	 *
@@ -44,18 +32,6 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 	 */
 	public function __construct(TableGateway $tableGateway) {
 		$this->tableGateway = $tableGateway;
-	}
-	
-	/**
-	 *
-	 * @param unknown $func        	
-	 * @param unknown $args        	
-	 * @return unknown
-	 */
-	public function __call($func, $args) {
-		if ($func == "prepareSave") {
-			return $args [0];
-		}
 	}
 	
 	/**
@@ -71,13 +47,6 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 		return new $class ( $this );
 	}
 	
-	/**
-	 *
-	 * @return \Model\Entity\unknown
-	 */
-	public function hasError() {
-		return $this->err;
-	}
 	
 	/**
 	 * (non-PHPdoc)
@@ -97,48 +66,6 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 		$this->serviceLocator = $serviceLocator;
 	}
 	
-	/**
-	 *
-	 * @return \Model\Entity\unknown
-	 */
-	public function getErrorMessage() {
-		return $this->errorMessage;
-	}
-	
-	/**
-	 *
-	 * @param unknown $msg        	
-	 */
-	public function setErrorMessage($msg) {
-		$this->err = true;
-		$this->errorMessage .= $msg;
-	}
-	
-	/**
-	 */
-	public function clearErrorMessage() {
-		$this->errorMessage = null;
-	}
-	
-	/**
-	 *
-	 * @param unknown $code        	
-	 */
-	public function setErrorCode($code) {
-		$this->errorCode = $code;
-	}
-	
-	/**
-	 */
-	public function getErrorCode() {
-		return $this->errorCode;
-	}
-	
-	/**
-	 */
-	public function clearErrorCode() {
-		$this->errorCode = null;
-	}
 	
 	/**
 	 *
@@ -160,11 +87,11 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 			return false;
 		}
 		
-		$table = substr ( $this->getTableGateway ()->table, strlen ( \Model\Entity\Schema::$prefix ) );
-		$columns = \Model\Entity\Schema::$schema [$table] ['columns'];
+		$table = $this->getTableGateway ()->table;
+		$columns = $this->getColumns ();
 		foreach ( $columns as $key => $value ) {
-			if (property_exists ( $entity, $value [0] ))
-				$data [$value [0]] = $entity->{$value [0]};
+			if (property_exists ( $entity, $value ))
+				$data [$value] = $entity->{$value};
 		}
 		
 		// if id is set then also we need to update
@@ -172,7 +99,7 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 		try {
 			
 			if (! is_array ( $where )) {
-					
+				
 				if ($data ['id'] > 0) {
 					$where = array (
 						"id" => $data ['id'] 
@@ -191,7 +118,7 @@ abstract class EntityTable implements \Zend\ServiceManager\ServiceLocatorAwareIn
 			}
 		} catch ( \Exception $e ) {
 			
-			return \Model\Custom\Error::trigger ( $e, $params );
+			die ( $e->getMessage () );
 		}
 	}
 	

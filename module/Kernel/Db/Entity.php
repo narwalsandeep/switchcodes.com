@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\Entity;
+namespace Kernel\Db;
 
 /**
  *
@@ -20,7 +20,6 @@ class Entity {
 	 * @param unknown $data        	
 	 */
 	public function exchangeArray($data) {
-		
 		// if nothing was sent, do not proceed at all
 		if (! $data) {
 			return false;
@@ -30,7 +29,24 @@ class Entity {
 			$this->{$key} = $value;
 		}
 		
-		$this->dated = time ();
+		if ($this->id)
+			$this->updated = time ();
+		else
+			$this->created = time ();
 		return $this;
+	}
+	
+	/**
+	 *
+	 * @param unknown $func        	
+	 * @param unknown $args        	
+	 * @return unknown
+	 */
+	public function __call($func, $args) {
+		if ($func == "prepareSave") {
+			return $args [0];
+		} else {
+			die ( "Invalid method name: $func" );
+		}
 	}
 }

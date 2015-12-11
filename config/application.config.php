@@ -3,7 +3,8 @@ return array (
 	'modules' => array (
 		'Application',
 		'Article',
-		'Model',
+		'Kernel',
+		'Component',
 		'Su' 
 	),
 	'module_listener_options' => array (

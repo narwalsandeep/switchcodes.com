@@ -1,5 +1,4 @@
 <?php
-use Zend\Authentication\AuthenticationService;
 echo $this->doctype ();
 ?>
 
@@ -71,16 +70,6 @@ echo $this->doctype ();
 
 <body class="fuelux">
 <?php
-// get service locator
-$sl = $this->viewmodel ()->getView ()->getHelperPluginManager ()->getServiceLocator ();
-
-// $UserTable = $sl->get('Model\Entity\User');
-$Auth = new AuthenticationService ();
-// check has identity, else Tests cases will fail
-if ($Auth->hasIdentity ()) {
-	$AuthStorage = $Auth->getStorage ()->read ();
-	// echo $AuthStorage->username;
-}
 echo $this->partial ( 'flash-messages' );
 ?>
 	<div class="container">
@@ -90,21 +79,7 @@ echo $this->partial ( 'flash-messages' );
 				<hr>
 			</div>
 			<div class='col-md-12'>
-				<div class="col-md-2">
-					<small class="text text-center"><img
-						class="img img-responsive img-circle col-md-12"
-						src="<?php echo $this->basepath()?>/img/sandeep.jpg">
-
-						<hR> <img class="img img-responsive img-rounded col-md-12"
-						src="http://www.asthmamd.org/images/icon_user_1.png">
-						<div class="text text-center text-muted">Vineet Saini</div> </small>
-					<hr>
-					<a href="<?php echo $this->basepath()?>/article/flyjax/read">
-						Flyjax</a> <small class="text text-muted">jquery ajax plugin with
-						buildin noty support</small>
-
-				</div>
-				<div class="col-md-10"><?php echo $this->layout()->content; ?></div>
+				<div class="col-md-12"><?php echo $this->layout()->content; ?></div>
 
 			</div>
 		</div>

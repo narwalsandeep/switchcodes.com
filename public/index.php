@@ -5,7 +5,9 @@
  */
 define ( 'APP_NAME', "SwitchCodes" );
 define ( 'PROJECT_WEBSITE', "http://www.switchcodes.com" ); // include http://, this is for footer only
-                                                            
+
+define ( "SESSION_KEY", "switchcodesfrijfeiwr847u8" );
+
 // === do not change below
 error_reporting ( E_ALL - E_NOTICE );
 ini_set ( 'display_errors', true );
