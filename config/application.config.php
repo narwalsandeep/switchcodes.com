@@ -2,7 +2,9 @@
 return array (
 	'modules' => array (
 		'Application',
-		'Article' 
+		'Article',
+		'Model',
+		'Su' 
 	),
 	'module_listener_options' => array (
 		'module_paths' => array (

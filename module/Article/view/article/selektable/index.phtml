@@ -1,0 +1,52 @@
+<style>
+
+.selectable-item{
+	height:200px;
+	border:1px solid  #aaa;
+	background-color:#eee;
+}
+.selectable-container div.selected{
+	border:1px solid #F78181;
+	border-right:2px solid #F78181;
+	border-bottom:2px solid #F78181;
+	box-shadow:4px 4px 2px 0px #F6CECE;
+		
+}</style>
+<div class="selectable-container">
+	<div class="col-md-2 selectable-item">
+		element 1
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 2
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 3
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 4
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 5
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 6
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 7
+	</div>
+	<div class="col-md-2 selectable-item">
+		element 8
+	</div>
+	
+</div>
+
+<script>
+$(function(){
+	// no defaults, evenrything needs to be passed
+	$(".selectable-container").selectElements({
+		'elToSelect' : "div"
+			
+	})
+});
+
+</script>

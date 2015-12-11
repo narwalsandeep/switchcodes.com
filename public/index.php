@@ -3,7 +3,7 @@
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
  */
-define ( 'APP_NAME', "Save Energy" );
+define ( 'APP_NAME', "SwitchCodes" );
 define ( 'PROJECT_WEBSITE', "http://www.switchcodes.com" ); // include http://, this is for footer only
                                                             
 // === do not change below

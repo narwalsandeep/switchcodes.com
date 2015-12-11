@@ -1,0 +1,98 @@
+<!-- BEGIN PAGE HEAD -->
+<div class="page-head">
+	<div class="container">
+		<!-- BEGIN PAGE TITLE -->
+		<div class="page-title">
+			<h3>
+				Installer. <small>please provide database information below and hit
+					submit.</small>
+				<hr>
+			</h3>
+		</div>
+		<!-- END PAGE TITLE -->
+	</div>
+</div>
+<!-- END PAGE HEAD -->
+<!-- BEGIN PAGE CONTENT -->
+<div class="page-content">
+	<div class="container">
+		<!-- BEGIN PAGE CONTENT INNER -->
+		<div class="row">
+			<div class="col-md-6">
+				<div class="portlet light">
+					<div class="portlet-body">
+						<form class="form-horizontal" flyjax
+							action="<?php echo $this->url("application/child",array("controller"=>"installer","action"=>"start"))?>"
+							method="post">
+							<div class="form-group form-md-line-input">
+								<label for="username" class="col-lg-4 control-label">DB Host</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" name="host"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group form-md-line-input">
+								<label for="username" class="col-lg-4 control-label">DB Name</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" name="dbname"
+										placeholder="new db will be created">
+								</div>
+							</div>
+							<div class="form-group form-md-line-input">
+								<label for="passwd" class="col-lg-4 control-label">DB Username</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" name="username"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group form-md-line-input">
+								<label for="passwd" class="col-lg-4 control-label">DB Password</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" name="password"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group form-md-line-input">
+								<label class="col-lg-4 control-label"></label>
+								<div class="col-lg-8 text text-danger">WARNING : This action
+									will first delete all existing tables and create new one. All
+									data will be lost.</div>
+							</div>
+							<div class="form-group form-md-line-input">
+								<label class="col-lg-4 control-label"></label>
+								<div class="col-lg-8">
+									<button type="submit"  class="btn btn-primary">Submit</button>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well">
+					<div class="start-status text text-primary">Installation Pending
+						...</div>
+					<div class="install-status"></div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE CONTENT INNER -->
+	</div>
+</div>
+<!-- END PAGE CONTENT -->
+
+<script>
+$(function() {
+
+	// via ajax submit plugin
+	$('form[flyjax]').flyjax({},function(form,response){
+		$(".start-status").html("Installing ...<hr>");
+		$(".install-status").html(response);
+	},function(form,response){
+		$(".install-status").html(response);
+	});
+
+});
+
+</script>

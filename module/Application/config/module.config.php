@@ -67,6 +67,7 @@ return array (
 			'Application\Controller\Index' => 'Application\Controller\IndexController',
 			'Application\Controller\Signup' => 'Application\Controller\SignupController',
 			'Application\Controller\Signin' => 'Application\Controller\SigninController',
+			'Application\Controller\Installer' => 'Application\Controller\InstallerController',
 			'Application\Controller\Support' => 'Application\Controller\SupportController' 
 		) 
 	),
